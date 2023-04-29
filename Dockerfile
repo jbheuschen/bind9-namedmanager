@@ -49,7 +49,6 @@ RUN ln -s /etc/apache2/sites-available/001-namedmanager.conf /etc/apache2/sites-
     && ln -s /etc/namedmanager/config.php $PWD/namedmanager/htdocs/include/config-settings.php \
     && ln -s /etc/namedmanager/config-bind.php $PWD/namedmanager/bind/include/config-settings.php \
     && sed -i -- "s#@NM_API_URL@#${NM_API_URL}#g" /etc/namedmanager/config-bind.php \
-    && sed -i -- "s/@NM_API_SERVER_NAME@/${NM_API_SERVER_NAME}/g" /etc/namedmanager/config-bind.php \
     && chmod +x /etc/init.d/namedmanager_logpush /usr/local/bin/docker-namedmanager-entrypoint \
     && echo "LANG=en_US.UTF-8" > /etc/default/locale \
     && touch /var/log/php_errors.log \
