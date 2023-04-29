@@ -9,6 +9,7 @@ if [ ! -f /etc/bind/namedmanager_initialized ]; then
     #sed -i -- "s/@NM_API_AUTH_KEY@/${AUTH_KEY}/g" /etc/namedmanager/config-bind.php
     sed -i -- "s#@NM_API_AUTH_KEY@#${AUTH_KEY}#g" /etc/namedmanager/config-bind.php 
     sed -i -- "s/@MYSQL_NM_PASSWORD@/${MYSQL_NM_PASSWORD}/g" /etc/namedmanager/config.php
+    sed -i -- "s/@NM_API_SERVER_NAME@/${NM_API_SERVER_NAME}/g" /etc/namedmanager/config-bind.php
     mkdir -p /var/log/apache2
     # init mysql
     mysql_install_db
