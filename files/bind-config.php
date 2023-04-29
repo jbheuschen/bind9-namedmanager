@@ -52,7 +52,7 @@ $config["lock_file"]		= "/var/lock/namedmanager_lock";
 $config["bind"]["version"]		= "9";					// version of bind (currently only 9 is supported, although others may work)
 $config["bind"]["reload"]		= "/usr/sbin/rndc reload";		// command to reload bind config & zonefiles
 $config["bind"]["config"]		= "/etc/bind/namedmanager.conf";	// configuration file to write bind config to
-$config["bind"]["zonefiledir"]		= "/etc/bind";			// directory to write zonefiles to
+$config["bind"]["zonefiledir"]		= "/etc/bind/";			// directory to write zonefiles to
 										// note: if using chroot bind, will often be /var/named/chroot/var/named/
 $config["bind"]["verify_zone"]		= "/usr/sbin/named-checkzone";		// Used to verify each generated zonefile as OK
 $config["bind"]["verify_config"]	= "/usr/sbin/named-checkconf";		// Used to verify generated NamedManager configuration
@@ -67,7 +67,7 @@ $config["bind"]["verify_config"]	= "/usr/sbin/named-checkconf";		// Used to veri
 // directory configuration or you really, really to store you zonefiles
 // in a different location
 //
-// $config["bind"]["zonefullpath"]		= "on";	
+$config["bind"]["zonefullpath"]		= "on";	
 
 
 // force debugging on for all users + scripts

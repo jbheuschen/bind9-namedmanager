@@ -1,0 +1,7 @@
+version: '3'
+services:
+  namedmanager:
+    build: .
+    ports:
+      - "8053:53/udp"
+      - "8090:8090"

@@ -10,9 +10,10 @@ options {
 	// Uncomment the following block, and insert the addresses replacing
 	// the all-0's placeholder.
 
-	// forwarders {
-	// 	0.0.0.0;
-	// };
+	forwarders {
+	 	1.1.1.1;
+		8.8.8.8;
+	};
 
 	//========================================================================
 	// If BIND logs error messages about the root key being expired,
@@ -29,7 +30,7 @@ options {
     allow-query { any; };
     allow-transfer  { localhost; };
 
-    recursion no;
+    recursion yes;
 
 	notify yes;
 };
