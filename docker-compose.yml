@@ -1,7 +1,7 @@
 version: '3'
 services:
   namedmanager:
-    build: .
+    image: ghcr.io/jbheuschen/bind9-namedmanager:master
     ports:
       - "8053:53/udp"
       - "8090:8090"
