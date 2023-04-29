@@ -5,11 +5,7 @@ if [ ! -f /etc/bind/namedmanager_initialized ]; then
     cp -r /var/www/html/namedmanager/etc_bind/* .
     mkdir /etc/bind/namedmanager
     rndc-confgen -a
-    AUTH_KEY=$(grep secret /etc/bind/rndc.key | awk -F '"' '{print $2}')
-    #sed -i -- "s/@NM_API_AUTH_KEY@/${AUTH_KEY}/g" /etc/namedmanager/config-bind.php
-    sed -i -- "s#@NM_API_AUTH_KEY@#${AUTH_KEY}#g" /etc/namedmanager/config-bind.php 
-    sed -i -- "s/@MYSQL_NM_PASSWORD@/${MYSQL_NM_PASSWORD}/g" /etc/namedmanager/config.php
-    sed -i -- "s/@NM_API_SERVER_NAME@/${NM_API_SERVER_NAME}/g" /etc/namedmanager/config-bind.php
+
     mkdir -p /var/log/apache2
     # init mysql
     mysql_install_db
@@ -33,6 +29,12 @@ if [ ! -f /etc/bind/namedmanager_initialized ]; then
 else
     service mariadb start
 fi
+
+AUTH_KEY=$(grep secret /etc/bind/rndc.key | awk -F '"' '{print $2}')
+#sed -i -- "s/@NM_API_AUTH_KEY@/${AUTH_KEY}/g" /etc/namedmanager/config-bind.php
+sed -i -- "s#@NM_API_AUTH_KEY@#${AUTH_KEY}#g" /etc/namedmanager/config-bind.php 
+sed -i -- "s/@MYSQL_NM_PASSWORD@/${MYSQL_NM_PASSWORD}/g" /etc/namedmanager/config.php
+sed -i -- "s/@NM_API_SERVER_NAME@/${NM_API_SERVER_NAME}/g" /etc/namedmanager/config-bind.php
 
 service named start
 service cron start
